@@ -7,24 +7,30 @@ const Login = () => {
   const [password, setPassword] = useState("");
   let navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
+    if (
+      localStorage.getItem("user-info") &&
+      !JSON.parse(localStorage.getItem("user-info")).error
+    ) {
       navigate("/add");
     }
   }, []);
-  const logIn = async ()=> {
-    let item = {email, password};
+  const logIn = async () => {
+    let item = { email, password };
     let result = await fetch("http://localhost:8000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json",
       },
-      body: JSON.stringify(item)
-    })
+      body: JSON.stringify(item),
+    });
     result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/add");
-  }
+
+    if (!result.error) {
+      localStorage.setItem("user-info", JSON.stringify(result));
+      navigate("/add");
+    }
+  };
   return (
     <div>
       <Header></Header>
@@ -44,7 +50,9 @@ const Login = () => {
           className="form-control"
         ></input>
         <br />
-        <button onClick={logIn} className="btn btn-primary">Login</button>
+        <button onClick={logIn} className="btn btn-primary">
+          Login
+        </button>
       </div>
     </div>
   );

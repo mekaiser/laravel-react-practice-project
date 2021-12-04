@@ -32,6 +32,22 @@
   padding-left: 30px;
 }
 
+.delete {
+  background-color: #a90b0b !important;
+  color: white;
+  padding: 5px !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update {
+  background-color: green !important;
+  color: white;
+  padding: 5px !important;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
