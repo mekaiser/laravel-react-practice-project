@@ -20,6 +20,7 @@ const Header = () => {
                 <Link to="/">Product List</Link>
                 <Link to="/add">Add Products</Link>
                 <Link to="/update">Update Products</Link>
+                <Link to="/search">Search Products</Link>
               </>
             ) : (
               <>

@@ -5,6 +5,7 @@ import Login from "./Login";
 import ProductList from "./ProductList";
 import Protected from "./Protected";
 import Register from "./Register";
+import SearchProduct from "./SearchProduct";
 import UpdateProduct from "./UpdateProduct";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           element={<Protected Component={AddProduct} />}>
           </Route>
           <Route path="/update/:id" element={<UpdateProduct />}></Route>
+          <Route path="/search" element={<SearchProduct />}></Route>
           <Route path="/" 
           element={<Protected Component={ProductList} />}>
           </Route>
